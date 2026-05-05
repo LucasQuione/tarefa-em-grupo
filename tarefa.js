@@ -21,7 +21,8 @@ listarTarefas();
 
 function removerTarefa(indice) {
   if (indice < 1 || indice > tarefas.length) {
-    console.log("Indice invalido."); return;
+    console.log("Indice invalido.");
+    return;
   }
   let rem = tarefas.splice(indice - 1, 1);
   console.log("Removida: " + rem[0].descricao);
@@ -38,3 +39,18 @@ console.log("Total: "+total+" | Feitas: "+feitas);
 }
 // Teste final
 resumo();
+removerTarefa(1);
+listarTarefas();
+
+function concluirTarefa(indice) {
+  if (indice < 1 || indice > tarefas.length) {
+    console.log("Indice invalido.");
+    return;
+  }
+  tarefas[indice - 1].concluida = true;
+  console.log("Concluida: " + tarefas[indice - 1].descricao);
+}
+// Teste
+adicionarTarefa("Tarefa C");
+concluirTarefa(1);
+listarTarefas();
