@@ -1,6 +1,6 @@
 // tarefas.js - Sistema de Lista de Tarefas
 let tarefas = [];
-let titulo = "GERENCIADOR DE TAREFAS"; // <- linha do conflito
+let titulo = "LISTA DE TAREFAS V2"; // <- linha do conflito
 function adicionarTarefa(descricao) {
   tarefas.push({ descricao: descricao, concluida: false });
   console.log("Tarefa adicionada: " + descricao);
@@ -21,11 +21,26 @@ listarTarefas();
 
 function removerTarefa(indice) {
   if (indice < 1 || indice > tarefas.length) {
-    console.log("Indice invalido."); return;
+    console.log("Indice invalido.");
+    return;
   }
   let rem = tarefas.splice(indice - 1, 1);
   console.log("Removida: " + rem[0].descricao);
 }
 // Teste
 adicionarTarefa("Tarefa B");
-removerTarefa(1); listarTarefas();
+removerTarefa(1);
+listarTarefas();
+
+function concluirTarefa(indice) {
+  if (indice < 1 || indice > tarefas.length) {
+    console.log("Indice invalido.");
+    return;
+  }
+  tarefas[indice - 1].concluida = true;
+  console.log("Concluida: " + tarefas[indice - 1].descricao);
+}
+// Teste
+adicionarTarefa("Tarefa C");
+concluirTarefa(1);
+listarTarefas();
